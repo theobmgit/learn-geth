@@ -1,11 +1,14 @@
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity >0.4.24;
 
 contract Store {
     event ItemSet(bytes32 key, bytes32 value);
 
+    string public version;
     mapping (bytes32 => bytes32) public items;
 
-    constructor(bytes memory data) public {
+    constructor(string memory _version) {
+        version = _version;
     }
 
     function setItem(bytes32 key, bytes32 value) external {

@@ -8,14 +8,14 @@ import (
 
 func newKeystore(dir string) string {
 	ks := keystore.NewKeyStore(dir, keystore.StandardScryptN, keystore.StandardScryptP)
-	pwd := "tubui"
+	pwd := "t4D0minic861"
 	account, err := ks.NewAccount(pwd)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	log.Println(account.URL.Path)
-	return account.URL.Path
+	log.Println(account.URL)
+	return account.Address.String()
 }
 
 func importKeystore(dir string, file string) {
@@ -25,7 +25,7 @@ func importKeystore(dir string, file string) {
 		log.Fatal(err)
 	}
 
-	pwd := "tubui"
+	pwd := "t4D0minic861"
 	account, err2 := ks.Import(jsonBytes, pwd, pwd)
 	if err2 != nil {
 		log.Fatal(err2)
@@ -39,6 +39,5 @@ func importKeystore(dir string, file string) {
 }
 
 func main() {
-	fileName := newKeystore("./wallet")
-	importKeystore("./wallet", fileName)
+	newKeystore("./wallet")
 }
